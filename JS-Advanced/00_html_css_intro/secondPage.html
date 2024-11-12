@@ -1,0 +1,311 @@
+<!-- Represent INTRODUCTIONARY CONTENT -->
+<!-- it may contain:
+ - headings
+ - logo
+ - search form 
+-->
+<header>
+    <h1>Welcome to my world</h1>
+    <!-- using <nav> for navigation links. It could be used in other tags, such as  -->
+    <nav id="leftmenu">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/tasks">Task Bord</a></li>
+            <li><a href="/create">Create</a></li>
+            <li><a href="/search">Search</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- Represent INTRODUCTIONARY CONTENT -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    Main CONTENT    -->
+<!-- MUST NOT BE more than one <main> element in the document -->
+<!-- Wrap the most important information in the boidy -->
+<main>
+    <h2>This is the main contain area</h2>
+</main>
+<!--    Main CONTENT    -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    SIDEBAR (<aside>)   -->
+<!-- Container who HOLDS a side navigation -->
+<!-- if it is AFTER Main content, it is placed on RIGHT-->
+<!-- if it is BEFORE Main content, it is placed on LEFT-->
+<aside>
+    <h3>Recent posts</h3>
+    <ul type="square">
+        <li><a href="#">Contacts</a></li>
+        <li><a href="#">History</a></li>
+    </ul>
+</aside>
+<!--    SIDEBAR (<aside>)    -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    FOOTER (<footer>) -->
+<!-- it is placed in the bottom of the page -->
+<!-- it could holds:
+    - links
+    - copyrights
+    - contacts
+    - other navigation end etc.
+-->
+<footer>
+    <br />
+    <p>Posted by: Boris Todorov</p>
+    <p>&copy;Copyright 2024</p>
+</footer>
+<!--    FOOTER (<footer>) -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    SECTION (<section>) -->
+<!-- typically followed by a heading -->
+<!-- it may have:
+    - header
+    - article
+    - footer and etc.
+ -->
+<section>
+    <h2>Section Heading</h2>
+    <footer>End of Section</footer>
+</section>
+<!--    SECTION (<section>) -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    ARTICLE (<article>) -->
+<!-- respresents self-contained section in a document, page, app or site -->
+<!-- it could be independently distributable or reusable -->
+<!-- Examples:
+    - Forum Posts
+    - Magazine
+    - Blog entry and etc.
+ -->
+<article>
+    <h2>Tips</h2>
+    <p>Tip #1</p>
+</article>
+<!--    ARTICLE (<article>) -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    FIGURE (<figure>) -->
+<!-- represents selft-contained content -->
+<!-- frequently with a caption "figcaption" -->
+<!-- typically referenced as a signle unit -->
+<figure>
+    <img src="https://news.lordgun.com/uploads/epic8_main_2b00efdd8b.jpg" alt="S-Works" />
+    <figcaption>Specialized S-Works Epic 8. The fastest XC bike on the planet.</figcaption>
+</figure>
+<!--    FIGURE (<figure>) -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    <DETAILS> + <SUMMARY> -->
+<!-- - <details> - additional details that the user can view or hide
+     - <summary> - defines a visible heading for the <details> -->
+<details>
+    <summary>Some details</summary>
+    <p>More info about the details. 1</p>
+    <p>More info about the details. 2</p>
+    <p>More info about the details. 3</p>
+</details>
+<!--    <DETAILS> + <SUMMARY> -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    <Time> + <Adress> -->
+<!-- <time> 
+    - a human-readable time 
+    - search engines can produce smarter results-->
+<p><strong>We</strong></p>
+<p>open at <time>10:00</time> every morning.</p>
+<p>close at <time>19:00</time> every morning.</p>
+<!-- <adress
+    - contact information for sute author/owner
+-->
+<address>
+    <a href="mailto:btodorovtodorov@gmail.com">btodorovtodorov@gmail.com</a>
+</address>
+<!--    <Time> + <Adress> -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    HTML Forms -->
+<!-- document section that contains interactive controls for submitting information -->
+<!-- takes INPUT from the site VISITOR and posts it-->
+<form>
+    <!-- it could be the following types: -->
+    <input type="text" name="username" />
+    <input type="password" name="password" />
+    <input type="submit" value="Login" />
+    <p>Type email: <input type="email" name="value" /></p>
+    <p>Type number: <input type="number" name="number" /></p>
+    <p>Type search: <input type="search" name="search" /></p>
+    <!-- for MULTI ANSWERS: checkbox -->
+    <p>Type checkbox: <input type="checkbox" /></p>
+    <!-- for  SINGLE ANSWER: radio-->
+    <p>
+        Type radio:
+        <label for="Male">Male</label>
+        <input type="radio" name="gender" id="Male" value="Gender" />
+        <label for="Female">Female</label>
+        <input type="radio" name="gender" id="Female" value="Gender" />
+    </p>
+    <p>Type range: <input type="range" /></p>
+    <p>Type button: <input type="button" value="Click the button!" /></p>
+    <p>Type file: <input type="file" value="Choose the file" /></p>
+</form>
+<!--  -->
+<!--  -->
+<!--  -->
+<!------------------    Input Validation and Input Fields -->
+<form>
+    Email validation:
+    <input type="email" required="true" />
+    <input type="submit" />
+</form>
+<form>
+    URL validation:
+    <input type="url" required="true" />
+    <input type="submit" />
+</form>
+<!--  -->
+<!--  -->
+<!--  -->
+<!------------------    FORM Elements - Input Attributes -->
+<!--    value          - initial value for an input field -->
+<!--    name           - specifies the name of the input element -->
+<!--    placeholder    - specifies a hint that describes the expected value of the input field -->
+<!--    required       - the field must be filled out before submitting the form -->
+<!--    autofocus      - get focus on the field when the page load -->
+<!--    disabled       - specifies that the input is disabled -->
+<!--    min/max        - specifies the minimum and maximum values -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!------------------    FORM Elements - Label -->
+<!-- <label> defines a label for the others forms elements -->
+<!-- FOR attribute should be equal to the ID attribute of the related element(from input) -->
+<form>
+    Select Language:
+    <label for="js">JS</label>
+    <input type="radio" name="Programming language" id="js" value="js" />
+    <label for="python">Python</label>
+    <input type="radio" name="Programming language" id="python" value="python" />
+</form>
+<!--  -->
+<!--  -->
+<!--  -->
+<!------------------    FORM Elements - Select -->
+<!-- <select> defines a drop-down list -->
+<!-- <option> defines an option that can be selected -->
+<form>
+    <label for="size">Select prefered banknote</label>
+    <select name="size" id="size">
+        <option value="5">5 EU</option>
+        <option value="10">10 EU</option>
+        <option value="20">20 EU</option>
+        <option value="50">50 EU</option>
+        <option value="100">100 EU</option>
+    </select>
+</form>
+<br />
+<!--  -->
+<!--  -->
+<!--  -->
+<!------------------    FORM Elements - Textarea -->
+<!-- <textarea> defines a multi-line input field -->
+<!-- contains:
+        - rows: visible number of lines in a text area
+        - cols: visible width of a text area
+-->
+<textarea name="Text area" id="" cols="30" rows="10">
+Text area is multi-line.
+This is the second line.
+Third line.
+</textarea>
+<br />
+<!--  -->
+<!--  -->
+<!--  -->
+<!------------------    FORM Elements - Buttons -->
+<!-- submit button - sends the form data to the server -->
+<br />
+<form>
+    Submit Button:
+    <input type="submit" value="Apply now!" />
+    <br />
+    Reset Button:
+    <input type="reset" />
+    <br />
+    Clickable Button:
+    <button type="button">Click Me!</button>
+</form>
+<!--    HTML Forms -->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------->
+<!--    HTML Tables (<table>) -->
+<!-- defined with the <table> tag -->
+<!-- each table row is defined with <tr> tag -->
+<!-- each table cell is defined with <td> tag -->
+<table border="1">
+    <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+    </tr>
+    <tr>
+        <td>D</td>
+        <td>E</td>
+        <td>F</td>
+    </tr>
+</table>
+<br />
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- Complete HTML Tables -->
+<!-- Three specific parts in every table:
+    - Table header
+    - Table body
+    - Table footer
+-->
+<table border="1">
+    <tbody>
+        <thead>
+            <tr>
+                <th>Original URL</th>
+                <th>Visits</th>
+            </tr>
+        </thead>
+
+        <tr>
+            <td>https://www.facebook.com/TodorovBoris</td>
+            <td>230</td>
+        </tr>
+
+        <tr>
+            <td>https://www.instagram.com/todorovboris/</td>
+            <td>150</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total visits</td>
+            <td>380</td>
+        </tr>
+    </tfoot>
+</table>
