@@ -12,5 +12,6 @@ Repo with all solutions from JS Fundamentals course - Lab and Exercices at Softw
 - Regular Expressions
 
 ## Certificate of successfully passed exam at the end of the course
-![Programming Fundamentals with JavaScript - May 2024 - Certificate](https://github.com/user-attachments/assets/df2e8a2b-f602-42c4-91d9-8e1e8c0b15c9)
+![Programming Fundamentals with JavaScript - May 2024 - Certificate](https://github.com/user-attachments/assets/8de74742-3344-4ca4-a754-944ae4b2f05e)
+
 
