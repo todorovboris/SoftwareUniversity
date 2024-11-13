@@ -1,6 +1,6 @@
 # Java Basics 2024
 
-Repo with all solutions from Java Basics course - Lab and Exercices at Software University. The following topics are:
+This repo contains all themes and tasks from Java basisc course in SoftUni. The following topics are:
 
 - First steps in coding
 - Conditional statements
