@@ -10,7 +10,7 @@ afterEach(async () => await page.close());
 after(async () => await browser.close());
 
 //
-// Describe all the test in this section
+// Describe all THE TESTS in this section
 describe('Home page:', async () => {
     it('Should load home page', async () => {
         await page.goto(homeUrl);
