@@ -1,6 +1,5 @@
-const registerUrl = 'http://localhost:3030/users/register';
+import auth from '../service/auth.js';
 
-// const registerForm = document.querySelector('main article form');
 const sectionElement = document.getElementById('register-section');
 const registerForm = sectionElement.querySelector('form');
 
@@ -13,25 +12,12 @@ registerForm.addEventListener('submit', async (e) => {
 
     const formData = new FormData(e.currentTarget);
 
-    const password = e.currentTarget.querySelector('input[name=password').value;
-    const email = e.currentTarget.querySelector('input[name=email').value;
-    const rePass = e.currentTarget.querySelector('input[name=rePass').value;
+    const email = formData.get('email');
+    const password = formData.get('password');
 
-    const response = await fetch(registerUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        }),
-    });
+    const registerResult = await auth.register(email, password);
 
-    const data = await response.json();
-    // it return accessToken, which will be used for future authentications,
-    // so we should save it somewhere
-    localStorage.setItem('accessToken', data.accessToken);
-    localStorage.setItem('email', data.email);
-    localStorage.setItem('_id', data._id);
-
-    window.location.href = 'index.html';
+    if (registerResult) {
+        location.href = '/';
+    }
 });
