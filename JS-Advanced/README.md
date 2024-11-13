@@ -1,6 +1,6 @@
 # JavaScript Advanced 2024
 
-Repo with all solutions from JS Aadvanced course - Lab and Exercices at Software University. The following topics are:
+This repo contains all themes and tasks from JS Advanced course from JS Advanced Module in SoftUni. The following topics are:
 - Syntax, Functions and Statements
 - Arrays and Nested Arrays
 - Objects and Composition
