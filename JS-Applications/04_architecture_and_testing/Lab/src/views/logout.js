@@ -1,13 +1,8 @@
-const logoutUrl = 'http://localhost:3030/users/logout';
+import auth from '../service/auth.js';
 
 export default function logoutPage() {
     const token = localStorage.getItem('accessToken');
 
-    fetch(logoutUrl, {
-        headers: { 'X-Authorization': token },
-    }).then(() => {
-        localStorage.clear();
-    });
-
-    window.location.href = 'index.html';
+    auth.logout(token);
+    location.href = '/';
 }
