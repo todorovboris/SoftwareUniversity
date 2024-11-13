@@ -1,6 +1,6 @@
 # Java Basics 2024
 
-This repo contains all themes and tasks from Java basisc course in SoftUni. The following topics are:
+This repo contains all themes and tasks from Programming Basics course with Java in SoftUni. The following topics are:
 
 - First steps in coding
 - Conditional statements
