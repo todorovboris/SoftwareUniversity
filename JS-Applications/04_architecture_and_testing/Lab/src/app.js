@@ -3,9 +3,11 @@ import registerPage from './views/register.js';
 import createPage from './views/create.js';
 import logoutPage from './views/logout.js';
 import catalogPage from './views/catalog.js';
+import homePage from './views/home.js';
 
 const sectionViews = {
-    '/': catalogPage,
+    '/': homePage,
+    '/catalog': catalogPage,
     '/login': loginPage,
     '/register': registerPage,
     '/create': createPage,

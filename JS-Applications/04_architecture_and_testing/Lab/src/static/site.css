@@ -17,6 +17,17 @@ header {
     position: relative;
 }
 
+h1 {
+    font-size: 150%;
+    display: inline;
+}
+
+h1 img {
+    height: 32px;
+    vertical-align: bottom;
+    margin-right: 8px;
+}
+
 h1 a {
     font-size: 150%;
     display: inline;
