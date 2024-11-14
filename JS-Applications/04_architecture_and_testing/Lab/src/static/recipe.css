@@ -7,7 +7,7 @@ article {
     border-radius: 16px;
 }
 
-h2 {
+article h2 {
     padding: 16px;
     padding-left: 32px;
     background-color: salmon;

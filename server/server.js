@@ -93,7 +93,7 @@
             // NOTE: the OPTIONS method results in undefined result and also it never processes plugins - keep this in mind
             if (method == 'OPTIONS') {
                 Object.assign(headers, {
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
                     'Access-Control-Allow-Credentials': false,
                     'Access-Control-Max-Age': '86400',
                     'Access-Control-Allow-Headers': 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-Authorization, X-Admin'
@@ -176,8 +176,15 @@
             .split('&')
             .filter(s => s != '')
             .map(x => x.split('='))
-            .reduce((p, [k, v]) => Object.assign(p, { [k]: decodeURIComponent(v) }), {});
-        const body = await parseBody(req);
+            .reduce((p, [k, v]) => Object.assign(p, { [k]: decodeURIComponent(v.replace(/\+/g, " ")) }), {});
+
+        let body;
+        // If req stream has ended body has been parsed
+        if (req.readableEnded) {
+            body = req.body;
+        } else {
+            body = await parseBody(req);
+        }
 
         return {
             serviceName,
@@ -1683,13 +1690,13 @@
     const server = http__default['default'].createServer(requestHandler(plugins, services));
 
     const port = 3030;
+
     server.listen(port);
+
     console.log(`Server started on port ${port}. You can make requests to http://localhost:${port}/`);
     console.log(`Admin panel located at http://localhost:${port}/admin`);
 
-    var softuniPracticeServer = {
-
-    };
+    var softuniPracticeServer = server;
 
     return softuniPracticeServer;
 

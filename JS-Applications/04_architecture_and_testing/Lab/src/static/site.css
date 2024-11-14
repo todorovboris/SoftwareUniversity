@@ -18,14 +18,7 @@ header {
 }
 
 h1 {
-    font-size: 150%;
     display: inline;
-}
-
-h1 img {
-    height: 32px;
-    vertical-align: bottom;
-    margin-right: 8px;
 }
 
 h1 a {
@@ -33,6 +26,12 @@ h1 a {
     display: inline;
     text-decoration: none;
     color: inherit; /* запазва цвета на заглавието */
+}
+
+h1 img {
+    height: 32px;
+    vertical-align: bottom;
+    margin-right: 8px;
 }
 
 h1 a:hover {
@@ -82,6 +81,32 @@ a.active {
     display: none;
 }
 
+#views {
+    display: none;
+}
+
 .site-section {
     display: none;
+}
+
+.hero {
+    display: block;
+    width: 850px;
+    margin: 32px auto 32px auto;
+    background-color: #cccccc;
+    box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.2), 12px 12px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 32px;
+}
+
+.section-title {
+    display: block;
+    width: 850px;
+    margin: 32px auto 32px auto;
+    background-color: #cccccc;
+    box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.2), 12px 12px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 16px 32px;
+}
+
+.pager {
+    margin: 0 8px;
 }
