@@ -11,89 +11,78 @@ async function loadRecipes() {
     const data = await response.json();
     sectionElement.innerHTML = '';
 
+    const fragment = document.createDocumentFragment();
+
     for (const recipe of Object.values(data)) {
-        const h2 = document.createElement('h2');
-        h2.textContent = recipe.name;
-
-        const divTitle = document.createElement('div');
-        divTitle.className = 'title';
-        divTitle.appendChild(h2);
-
-        const img = document.createElement('img');
-        img.src = recipe.img;
-
-        const divSmall = document.createElement('div');
-        divSmall.className = 'small';
-        divSmall.appendChild(img);
-
         const article = document.createElement('article');
         article.className = 'preview';
-        article.setAttribute('id', recipe._id);
+        article.id = recipe._id;
         article.style.display = 'block';
-        article.appendChild(divTitle);
-        article.appendChild(divSmall);
+        article.innerHTML = `
+            <div class="title">
+                <h2>${recipe.name}</h2>
+            </div>
+            <div class="small">
+                <img src="${recipe.img}" alt="${recipe.name}">
+            </div>
+        `;
 
         article.addEventListener('click', loadAdditionalInfo);
 
-        sectionElement.appendChild(article);
+        fragment.appendChild(article);
     }
+
+    sectionElement.appendChild(fragment);
 }
 
 async function loadAdditionalInfo(e) {
     sectionElement.innerHTML = '';
 
     const id = e.target.closest('article').id;
-
     const response = await fetch(`${baseUrl}/${id}`);
     const data = await response.json();
 
-    // define div class BAND
-    const h3Ingredients = document.createElement('h3');
-    h3Ingredients.textContent = 'Ingredients:';
+    const fragment = document.createDocumentFragment();
 
-    const ul = document.createElement('ul');
-    for (const ingredient of data.ingredients) {
-        const li = document.createElement('li');
-        li.textContent = ingredient;
-        ul.appendChild(li);
-    }
+    const ingredientsHTML = `
+        <div class="ingredients">
+            <h3>Ingredients:</h3>
+            <ul>
+                ${data.ingredients.map((ingredient) => `<li>${ingredient}</li>`).join('')}
+            </ul>
+        </div>
+    `;
 
-    const divIngredients = document.createElement('div');
-    divIngredients.className = 'ingredients';
-    divIngredients.appendChild(h3Ingredients);
-    divIngredients.appendChild(ul);
+    const thumbHTML = `
+        <div class="thumb">
+            <img src="${data.img}" alt="${data.name}">
+        </div>
+    `;
 
-    const img = document.createElement('img');
-    img.src = data.img;
+    const bandHTML = `
+        <div class="band">
+            ${thumbHTML}
+            ${ingredientsHTML}
+        </div>
+    `;
 
-    const divThumb = document.createElement('div');
-    divThumb.className = 'thumb';
-    divThumb.appendChild(img);
+    const stepsHTML = data.steps.map((step) => `<p>${step}</p>`).join('');
+    const descriptionHTML = `
+        <div class="description">
+            <h3>Preparation:</h3>
+            ${stepsHTML}
+        </div>
+    `;
 
-    const divBand = document.createElement('div');
-    divBand.className = 'band';
-    divBand.appendChild(divThumb);
-    divBand.appendChild(divIngredients);
-
-    // define div class DESCRIPTION
-    const divDescription = document.createElement('div');
-    divDescription.className = 'description';
-
-    const h3Description = document.createElement('h3');
-    h3Description.textContent = 'Preparation:';
-
-    divDescription.appendChild(h3Description);
-
-    for (const paragraph of data.steps) {
-        const p = document.createElement('p');
-        p.textContent = paragraph;
-        divDescription.appendChild(p);
-    }
+    const article = document.createElement('article');
+    article.innerHTML = `
+        <h2>${data.name}</h2>
+        ${bandHTML}
+        ${descriptionHTML}
+    `;
 
     const userId = localStorage.getItem('_id');
-    const isOwner = data._ownerId === userId;
-
-    if (isOwner) {
+    if (data._ownerId === userId) {
         const editBtn = document.createElement('button');
         editBtn.textContent = 'Edit';
         editBtn.addEventListener('click', editRecipe);
@@ -102,20 +91,12 @@ async function loadAdditionalInfo(e) {
         deleteBtn.textContent = 'Delete';
         deleteBtn.addEventListener('click', deleteRecipe);
 
-        divDescription.appendChild(editBtn);
-        divDescription.appendChild(deleteBtn);
+        article.querySelector('.description').appendChild(editBtn);
+        article.querySelector('.description').appendChild(deleteBtn);
     }
 
-    // append ARTICLE CHILDREN
-    const h2 = document.createElement('h2');
-    h2.textContent = data.name;
-
-    const article = document.createElement('article');
-    article.appendChild(h2);
-    article.appendChild(divBand);
-    article.appendChild(divDescription);
-
-    sectionElement.appendChild(article);
+    fragment.appendChild(article);
+    sectionElement.appendChild(fragment);
 }
 
 function editRecipe() {
