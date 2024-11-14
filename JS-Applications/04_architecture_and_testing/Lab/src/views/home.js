@@ -15,12 +15,12 @@ async function loadRecipes() {
         const h2 = document.createElement('h2');
         h2.textContent = recipe.name;
 
-        const img = document.createElement('img');
-        img.src = recipe.img;
-
         const divTitle = document.createElement('div');
         divTitle.className = 'title';
         divTitle.appendChild(h2);
+
+        const img = document.createElement('img');
+        img.src = recipe.img;
 
         const divSmall = document.createElement('div');
         divSmall.className = 'small';
@@ -32,6 +32,7 @@ async function loadRecipes() {
         article.style.display = 'block';
         article.appendChild(divTitle);
         article.appendChild(divSmall);
+
         article.addEventListener('click', loadAdditionalInfo);
 
         sectionElement.appendChild(article);

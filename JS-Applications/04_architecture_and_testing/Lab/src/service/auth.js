@@ -11,7 +11,6 @@ async function login(email, password) {
     });
 
     const data = await response.json();
-    console.log(data);
 
     if (data.code >= 400) {
         return alert(data.message);
@@ -35,6 +34,10 @@ async function register(email, password) {
     });
 
     const data = await response.json();
+
+    if (data.code >= 400) {
+        return alert(data.message);
+    }
 
     localStorage.setItem('accessToken', data.accessToken);
     localStorage.setItem('email', data.email);
