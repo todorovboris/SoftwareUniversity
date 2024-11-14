@@ -32,6 +32,17 @@ function initNavigation() {
         sectionViews[pathname]();
     });
 
+    const homePageCatalog = document.querySelector('main section footer p a');
+    homePageCatalog.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const url = new URL(e.target.href);
+        const pathname = url.pathname;
+
+        document.querySelector('main section').innerHTML = '';
+        sectionViews[pathname]();
+    });
+
     sectionViews['/']();
     renderNavigation();
 }
