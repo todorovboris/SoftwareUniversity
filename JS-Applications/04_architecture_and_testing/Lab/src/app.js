@@ -1,11 +1,11 @@
-import homePage from './views/home.js';
 import loginPage from './views/login.js';
 import registerPage from './views/register.js';
 import createPage from './views/create.js';
 import logoutPage from './views/logout.js';
+import catalogPage from './views/catalog.js';
 
 const sectionViews = {
-    '/': homePage,
+    '/': catalogPage,
     '/login': loginPage,
     '/register': registerPage,
     '/create': createPage,
