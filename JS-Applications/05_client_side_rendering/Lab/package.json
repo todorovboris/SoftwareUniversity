@@ -15,5 +15,8 @@
         "chai": "^5.1.2",
         "lite-server": "^2.6.1",
         "mocha": "^10.8.2"
+    },
+    "dependencies": {
+        "lit-html": "^3.2.1"
     }
 }
