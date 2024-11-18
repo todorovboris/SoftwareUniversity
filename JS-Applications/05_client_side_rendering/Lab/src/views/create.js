@@ -1,13 +1,26 @@
-const createUrl = 'http://localhost:3030/data/recipes';
+import { html, render } from 'https://unpkg.com/lit-html';
+const baseUrl = 'http://localhost:3030/data/recipes';
 
-const sectionElement = document.getElementById('create-section');
-const createForm = sectionElement.querySelector('form');
+const mainSection = document.querySelector('body main');
+
+const template = () => html`
+    <section id="create-secti on">
+        <h2>New Recipe</h2>
+        <form @submit=${createFormSubmit}>
+            <label>Name: <input type="text" name="name" placeholder="Recipe name" /></label>
+            <label>Image: <input type="text" name="img" placeholder="Image URL" /></label>
+            <label class="ml">Ingredients: <textarea name="ingredients" placeholder="Enter ingredients on separate lines"></textarea></label>
+            <label class="ml">Preparation: <textarea name="steps" placeholder="Enter preparation steps on separate lines"></textarea></label>
+            <input type="submit" value="Create Recipe" />
+        </form>
+    </section>
+`;
 
 export default function createPage() {
-    sectionElement.style.display = 'block';
+    render(template(), mainSection);
 }
 
-createForm.addEventListener('submit', (e) => {
+function createFormSubmit(e) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -15,10 +28,11 @@ createForm.addEventListener('submit', (e) => {
 
     recipeData.ingredients = recipeData.ingredients.split('\n');
     recipeData.steps = recipeData.steps.split('\n');
+
     const accessToken = localStorage.getItem('accessToken');
     console.log(accessToken);
 
-    fetch(createUrl, {
+    fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(recipeData),
         headers: {
@@ -32,4 +46,4 @@ createForm.addEventListener('submit', (e) => {
         });
 
     window.location.href = 'index.html';
-});
+}
