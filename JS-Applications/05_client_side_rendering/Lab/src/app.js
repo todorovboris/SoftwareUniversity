@@ -32,7 +32,7 @@ function initNavigation() {
         sectionViews[pathname]();
     });
 
-    const homePageCatalog = document.querySelector('main section footer p a');
+    const homePageCatalog = document.querySelector('main section');
     homePageCatalog.addEventListener('click', (e) => {
         e.preventDefault();
 

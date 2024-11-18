@@ -1,3 +1,4 @@
+import { html, render } from 'https://unpkg.com/lit-html';
 import auth from '../service/auth.js';
 
 const sectionElement = document.getElementById('login-section');
