@@ -32,6 +32,7 @@ function initNavigation() {
         sectionViews[pathname]();
     });
 
+    const homeSection = document.getElementById('home-section');
     const homePageCatalog = document.querySelector('main section');
     homePageCatalog.addEventListener('click', (e) => {
         e.preventDefault();

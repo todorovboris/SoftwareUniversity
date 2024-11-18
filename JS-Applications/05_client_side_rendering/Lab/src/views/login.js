@@ -1,14 +1,24 @@
 import { html, render } from 'https://unpkg.com/lit-html';
 import auth from '../service/auth.js';
 
-const sectionElement = document.getElementById('login-section');
-const loginForm = sectionElement.querySelector('form');
+const mainSection = document.querySelector('body main');
+
+const template = () => html`
+    <section id="login-section">
+        <h2>Login</h2>
+        <form @submit=${formSubmit}>
+            <label>E-mail: <input type="text" name="email" /></label>
+            <label>Password: <input type="password" name="password" /></label>
+            <input type="submit" value="Login" />
+        </form>
+    </section>
+`;
 
 export default function loginPage() {
-    sectionElement.style.display = 'block';
+    render(template(), mainSection);
 }
 
-loginForm.addEventListener('submit', async (e) => {
+async function formSubmit(e) {
     e.preventDefault();
 
     const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
@@ -18,4 +28,4 @@ loginForm.addEventListener('submit', async (e) => {
     if (loginResult) {
         location.href = '/';
     }
-});
+}
