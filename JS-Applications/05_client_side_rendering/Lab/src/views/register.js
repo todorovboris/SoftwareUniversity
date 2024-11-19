@@ -1,13 +1,25 @@
+import { html, render } from 'https://unpkg.com/lit-html';
 import auth from '../service/auth.js';
 
-const sectionElement = document.getElementById('register-section');
-const registerForm = sectionElement.querySelector('form');
+const mainSection = document.querySelector('body main');
+
+const template = () => html`
+    <section id="register-section">
+        <h2>Register</h2>
+        <form @submit=${registerFormSubmit}>
+            <label>E-mail: <input type="text" name="email" /></label>
+            <label>Password: <input type="password" name="password" /></label>
+            <label>Repeat: <input type="password" name="rePass" /></label>
+            <input type="submit" value="Register" />
+        </form>
+    </section>
+`;
 
 export default function registerPage() {
-    sectionElement.style.display = 'block';
+    render(template(), mainSection);
 }
 
-registerForm.addEventListener('submit', async (e) => {
+async function registerFormSubmit(e) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -20,4 +32,4 @@ registerForm.addEventListener('submit', async (e) => {
     if (registerResult) {
         location.href = '/';
     }
-});
+}

@@ -6,7 +6,7 @@ const mainSection = document.querySelector('body main');
 const template = () => html`
     <section id="login-section">
         <h2>Login</h2>
-        <form @submit=${formSubmit}>
+        <form @submit=${loginFormSubmit}>
             <label>E-mail: <input type="text" name="email" /></label>
             <label>Password: <input type="password" name="password" /></label>
             <input type="submit" value="Login" />
@@ -18,14 +18,19 @@ export default function loginPage() {
     render(template(), mainSection);
 }
 
-async function formSubmit(e) {
+async function loginFormSubmit(e) {
     e.preventDefault();
 
-    const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+    try {
+        //
+        const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
 
-    const loginResult = await auth.login(email, password);
+        const loginResult = await auth.login(email, password);
 
-    if (loginResult) {
-        location.href = '/';
+        if (loginResult) {
+            location.href = '/';
+        }
+    } catch {
+        //
     }
 }
