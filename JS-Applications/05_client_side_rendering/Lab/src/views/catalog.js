@@ -1,102 +1,82 @@
+import { html, render } from 'https://unpkg.com/lit-html';
+import { recipes } from '../service/recipes.js';
 const baseUrl = 'http://localhost:3030/data/recipes';
+
+const mainSection = document.querySelector('body main');
 const sectionElement = document.getElementById('catalog-section');
 
-export default function catalogPage() {
-    sectionElement.style.display = 'block';
-    loadRecipes();
-}
+const template = (recipes = []) => html`
+    <section id="catalog-section">
+        ${recipes.map(
+            (recipe) => html`
+                <article @click=${() => recipeClickHandler(recipe._id)} class="preview" id="${recipe._id}">
+                    <div class="title">
+                        <h2>${recipe.name}</h2>
+                    </div>
+                    <div class="small">
+                        <img src="${recipe.img}" alt="${recipe.name}" />
+                    </div>
+                </article>
+            `
+        )}
+    </section>
+`;
 
-async function loadRecipes() {
-    const response = await fetch(baseUrl);
-    const data = await response.json();
-    sectionElement.innerHTML = '';
-
-    const fragment = document.createDocumentFragment();
-
-    for (const recipe of Object.values(data)) {
-        const article = document.createElement('article');
-        article.className = 'preview';
-        article.id = recipe._id;
-        article.style.display = 'block';
-        article.innerHTML = `
-            <div class="title">
-                <h2>${recipe.name}</h2>
-            </div>
-            <div class="small">
-                <img src="${recipe.img}" alt="${recipe.name}">
-            </div>
-        `;
-
-        article.addEventListener('click', loadAdditionalInfo);
-
-        fragment.appendChild(article);
-    }
-
-    sectionElement.appendChild(fragment);
-}
-
-async function loadAdditionalInfo(e) {
-    sectionElement.innerHTML = '';
-
-    const id = e.target.closest('article').id;
-    const response = await fetch(`${baseUrl}/${id}`);
-    const data = await response.json();
-
-    const fragment = document.createDocumentFragment();
-
-    const ingredientsHTML = `
-        <div class="ingredients">
-            <h3>Ingredients:</h3>
-            <ul>
-                ${data.ingredients.map((ingredient) => `<li>${ingredient}</li>`).join('')}
-            </ul>
-        </div>
-    `;
-
-    const thumbHTML = `
-        <div class="thumb">
-            <img src="${data.img}" alt="${data.name}">
-        </div>
-    `;
-
-    const bandHTML = `
+const detailsInfoTemplate = ({ article, isOwner }) => html`
+    <article>
+        <h2>${article.name}</h2>
         <div class="band">
-            ${thumbHTML}
-            ${ingredientsHTML}
-        </div>
-    `;
+            <div class="thumb">
+                <img src="${article.img}" alt="${article.name}" />
+            </div>
 
-    const stepsHTML = data.steps.map((step) => `<p>${step}</p>`).join('');
-    const descriptionHTML = `
+            <div class="ingredients">
+                <h3>Ingredients:</h3>
+                <ul>
+                    ${article.ingredients.map((ingredient) => html`<li>${ingredient}</li>`)}
+                </ul>
+            </div>
+        </div>
         <div class="description">
             <h3>Preparation:</h3>
-            ${stepsHTML}
+            ${article.steps.map((step) => html`<p>${step}</p>`)}
         </div>
-    `;
+        ${isOwner
+            ? html`
+                  <div>
+                      <button>Edit</button>
+                      <button>Delete</button>
+                  </div>
+              `
+            : ''}
+    </article>
+`;
 
-    const article = document.createElement('article');
-    article.innerHTML = `
-        <h2>${data.name}</h2>
-        ${bandHTML}
-        ${descriptionHTML}
-    `;
+export default function catalogPage() {
+    render(template(), mainSection);
+
+    recipes
+        .getAll()
+        .then((recipes) => {
+            render(template(recipes), mainSection);
+        })
+        .catch((err) => alert(err.message));
+}
+
+async function recipeClickHandler(recipeId) {
+    const response = await fetch(`${baseUrl}/${recipeId}`);
+    const articleDetails = await response.json();
 
     const userId = localStorage.getItem('_id');
-    if (data._ownerId === userId) {
-        const editBtn = document.createElement('button');
-        editBtn.textContent = 'Edit';
-        editBtn.addEventListener('click', editRecipe);
+    const isOwner = articleDetails._ownerId === userId;
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete';
-        deleteBtn.addEventListener('click', deleteRecipe);
-
-        article.querySelector('.description').appendChild(editBtn);
-        article.querySelector('.description').appendChild(deleteBtn);
-    }
-
-    fragment.appendChild(article);
-    sectionElement.appendChild(fragment);
+    render(
+        detailsInfoTemplate({
+            article: articleDetails,
+            isOwner,
+        }),
+        mainSection
+    );
 }
 
 function editRecipe() {

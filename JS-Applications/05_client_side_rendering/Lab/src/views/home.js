@@ -4,7 +4,7 @@ import { recipes } from '../service/recipes.js';
 
 const mainSection = document.querySelector('body main');
 
-const recipesTemplate = (recipes = []) => html`
+const recipeTemplate = (recipes = []) => html`
     <section id="home-section">
         <div class="hero">
             <h2>Welcome to My Cookbook</h2>
@@ -29,7 +29,9 @@ const recipesTemplate = (recipes = []) => html`
 `;
 
 export default function homePage() {
+    render(recipeTemplate([]), mainSection);
+
     recipes.getRecent().then((recipes) => {
-        render(recipesTemplate(recipes), mainSection);
+        render(recipeTemplate(recipes), mainSection);
     });
 }
