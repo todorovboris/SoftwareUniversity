@@ -1,5 +1,6 @@
 import { html, render } from 'https://unpkg.com/lit-html';
 import auth from '../service/auth.js';
+import page from '//unpkg.com/page/page.mjs';
 
 const mainSection = document.querySelector('body main');
 
@@ -29,6 +30,7 @@ async function loginFormSubmit(e) {
 
         if (loginResult) {
             location.href = '/';
+            page.redirect('/');
         }
     } catch {
         //

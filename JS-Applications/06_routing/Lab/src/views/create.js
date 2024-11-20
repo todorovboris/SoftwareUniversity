@@ -1,3 +1,4 @@
+import page from '//unpkg.com/page/page.mjs';
 import { html, render } from 'https://unpkg.com/lit-html';
 const baseUrl = 'http://localhost:3030/data/recipes';
 
@@ -43,7 +44,6 @@ function createFormSubmit(e) {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
+            page.redirect('/catalog');
         });
-
-    window.location.href = 'index.html';
 }
