@@ -1,3 +1,4 @@
+import page from '//unpkg.com/page/page.mjs';
 import { html, render } from 'https://unpkg.com/lit-html';
 import auth from '../service/auth.js';
 
@@ -30,6 +31,6 @@ async function registerFormSubmit(e) {
     const registerResult = await auth.register(email, password);
 
     if (registerResult) {
-        location.href = '/';
+        page.redirect('/');
     }
 }
