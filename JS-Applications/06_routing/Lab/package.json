@@ -16,7 +16,8 @@
     "mocha": "^10.8.2"
   },
   "dependencies": {
-    "lit-html": "^3.2.1"
+    "lit-html": "^3.2.1",
+    "page": "^1.11.6"
   },
   "directories": {
     "test": "test"
