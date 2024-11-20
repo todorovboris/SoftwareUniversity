@@ -15,8 +15,8 @@ const sectionViews = {
 };
 
 function initNavigation() {
-    const navElement = document.querySelector('header nav');
-    navElement.addEventListener('click', (e) => {
+    const bodyElement = document.querySelector('body');
+    bodyElement.addEventListener('click', (e) => {
         e.preventDefault();
 
         if (e.target.tagName !== 'A') return;
