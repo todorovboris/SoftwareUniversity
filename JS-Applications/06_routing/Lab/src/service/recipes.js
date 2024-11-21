@@ -17,4 +17,7 @@ export const recipes = {
             .then((response) => response.json())
             .then((data) => Object.values(data));
     },
+    getOne(id) {
+        return fetch(`${baseUrl}/${id}`).then((response) => response.json());
+    },
 };
