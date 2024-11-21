@@ -22,17 +22,14 @@ export default function loginPage() {
 async function loginFormSubmit(e) {
     e.preventDefault();
 
+    const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+
     try {
-        //
-        const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
-
         const loginResult = await auth.login(email, password);
-
         if (loginResult) {
-            location.href = '/';
             page.redirect('/');
         }
-    } catch {
-        //
+    } catch (err) {
+        alert(err.message);
     }
 }

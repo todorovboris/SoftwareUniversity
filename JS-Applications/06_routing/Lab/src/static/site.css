@@ -73,22 +73,6 @@ a.active {
     color: white;
 }
 
-#user {
-    display: none;
-}
-
-#guest {
-    display: none;
-}
-
-#views {
-    display: none;
-}
-
-.site-section {
-    display: none;
-}
-
 .hero {
     display: block;
     width: 850px;
