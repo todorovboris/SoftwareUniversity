@@ -1,9 +1,14 @@
 const baseUrl = 'http://localhost:3030/data/recipes';
 
 export const recipes = {
-    //
-    getAll() {
-        return fetch(baseUrl)
+    getAll(filter) {
+        const seaerchParams = new URLSearchParams();
+
+        if (filter.search) {
+            seaerchParams.set('where', `name LIKE "${filter.search}"`);
+        }
+
+        return fetch(`${baseUrl}?${seaerchParams.toString()}`)
             .then((response) => response.json())
             .then((data) => Object.values(data));
     },

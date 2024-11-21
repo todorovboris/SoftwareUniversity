@@ -2,7 +2,6 @@ import { html, render } from 'https://unpkg.com/lit-html';
 import { recipes } from '../service/recipes.js';
 
 const mainSection = document.querySelector('body main');
-const baseUrl = 'http://localhost:3030/data/recipes';
 
 const template = ({ article, isOwner }) => html`
     <article>
