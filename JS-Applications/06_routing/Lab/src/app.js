@@ -8,12 +8,16 @@ import catalogPage from './views/catalog.js';
 import homePage from './views/home.js';
 import renderNavigation from './views/navigation.js';
 
+// Middleware - this will execute before each navigation
+page(renderNavigation);
+
+// Execute by route
 page('/', homePage);
 page('/catalog', catalogPage);
 page('/login', loginPage);
 page('/register', registerPage);
 page('/create', createPage);
 page('/logout', logoutPage);
-page();
 
-renderNavigation();
+// Start router
+page();

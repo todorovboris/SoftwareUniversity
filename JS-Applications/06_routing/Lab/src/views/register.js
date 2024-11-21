@@ -28,9 +28,12 @@ async function registerFormSubmit(e) {
     const email = formData.get('email');
     const password = formData.get('password');
 
-    const registerResult = await auth.register(email, password);
-
-    if (registerResult) {
-        page.redirect('/');
+    try {
+        const registerResult = await auth.register(email, password);
+        if (registerResult) {
+            page.redirect('/');
+        }
+    } catch (err) {
+        alert(err.message);
     }
 }
