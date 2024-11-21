@@ -4,8 +4,15 @@ import page from '//unpkg.com/page/page.mjs';
 
 const mainSection = document.querySelector('body main');
 
-const template = (recipes = []) => html`
+const template = (recipes = [], onSearch) => html`
     <section id="catalog-section">
+        <form @submit=${onSearch} style="display: flex; justify-content: center;">
+            <div>
+                <input type="text" name="search" style="position: unset;" />
+                <input type="submit" value="Search" style="display: inline" />
+            </div>
+        </form>
+
         ${recipes.map(
             (recipe) => html`
                 <article @click=${() => recipeClickHandler(recipe._id)} class="preview" id="${recipe._id}">
@@ -21,13 +28,18 @@ const template = (recipes = []) => html`
     </section>
 `;
 
-export default function catalogPage() {
-    render(template(), mainSection);
+export default function catalogPage(ctx) {
+    const searchParams = new URLSearchParams(ctx.querystring);
+    const filter = {
+        search: searchParams.get('search'),
+    };
+
+    render(template([], searchHandler), mainSection);
 
     recipes
-        .getAll()
+        .getAll(filter)
         .then((recipes) => {
-            render(template(recipes), mainSection);
+            render(template(recipes, searchHandler), mainSection);
         })
         .catch((err) => alert(err.message));
 }
@@ -36,10 +48,19 @@ async function recipeClickHandler(recipeId) {
     page.redirect(`/catalog/${recipeId}`);
 }
 
-function editRecipe() {
-    console.log('edit');
+function searchHandler(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const search = formData.get('search');
+
+    page.redirect(`/catalog?search=${search}`);
 }
 
-function deleteRecipe() {
-    console.log('delete');
-}
+// function editRecipe() {
+//     console.log('edit');
+// }
+
+// function deleteRecipe() {
+//     console.log('delete');
+// }
