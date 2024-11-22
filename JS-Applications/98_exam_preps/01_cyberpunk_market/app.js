@@ -1,8 +1,8 @@
 import page from './lib/page.js';
+
 import createView from './views/create.js';
 import dashboardView from './views/dashboard.js';
 import editView from './views/edit.js';
-
 import homeView from './views/home.js';
 import loginView from './views/login.js';
 import logoutView from './views/logout.js';
