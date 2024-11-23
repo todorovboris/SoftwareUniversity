@@ -26,11 +26,16 @@ async function loginFormSubmit(e) {
     const email = formData.get('email');
     const password = formData.get('password');
 
+    // VALIDATION
     if (email === '' || password === '') {
         return alert`All fields are required!`;
     }
 
     const userData = await login(email, password);
+
+    if (userData.code >= 400) {
+        return alert(userData.message);
+    }
 
     try {
         if (userData) {
