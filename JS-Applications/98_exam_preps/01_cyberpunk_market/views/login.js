@@ -1,9 +1,11 @@
+import { login } from '../api/auth.js';
 import { html, render } from '../lib/lit-html.js';
+import page from '../lib/page.js';
 
 const template = () => html` <section id="login">
     <div class="form">
         <h2>Login</h2>
-        <form class="login-form">
+        <form @submit=${loginFormSubmit} class="login-form">
             <input type="text" name="email" id="email" placeholder="email" />
             <input type="password" name="password" id="password" placeholder="password" />
             <button type="submit">login</button>
@@ -24,5 +26,26 @@ async function loginFormSubmit(e) {
     const email = formData.get('email');
     const password = formData.get('password');
 
-    // const userData = await ÷
+    // VALIDATION
+    if (email === '' || password === '') {
+        return alert`All fields are required!`;
+    }
+
+    const userData = await login(email, password);
+
+    if (userData.code >= 400) {
+        return alert(userData.message);
+    }
+
+    try {
+        if (userData) {
+            localStorage.setItem('_id', userData._id);
+            localStorage.setItem('email', userData.email);
+            localStorage.setItem('accessToken', userData.accessToken);
+
+            page.redirect('/');
+        }
+    } catch (err) {
+        alert(err.message);
+    }
 }

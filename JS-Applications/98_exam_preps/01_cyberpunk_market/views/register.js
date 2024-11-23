@@ -35,6 +35,9 @@ async function registerFormSubmit(e) {
 
     const userData = await register(email, password);
 
+    if (userData.code >= 400) {
+        return alert(userData.message);
+    }
     // ERROR HANDLING
     try {
         if (userData) {
