@@ -6,7 +6,7 @@ export default async function logoutView(ctx) {
 
     if (token) {
         try {
-            logout(token);
+            await logout(token);
             page.redirect('/');
         } catch (err) {
             console.error(err.message);
