@@ -33,13 +33,14 @@ async function registerFormSubmit(e) {
         return alert`Passwords don't match`;
     }
 
-    const userData = await register(email, password);
-
-    if (userData.code >= 400) {
-        return alert(userData.message);
-    }
     // ERROR HANDLING
     try {
+        const userData = await register(email, password);
+
+        if (userData.code >= 400) {
+            return alert(userData.message);
+        }
+
         if (userData) {
             localStorage.setItem('accessToken', userData.accessToken);
             localStorage.setItem('email', userData.email);
