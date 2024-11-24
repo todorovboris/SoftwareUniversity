@@ -1,4 +1,4 @@
-import { html, render } from '../lib/lit-html.js';
+import { html, render } from '../../lib/lit-html.js';
 
 const template = () => html``;
 

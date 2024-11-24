@@ -6,3 +6,9 @@ export async function getAll() {
 
     return items;
 }
+
+export async function getOne(id) {
+    const response = await fetch(`${baseUrl}/cyberpunk/${id}`);
+    const item = await response.json();
+    return item;
+}
