@@ -31,13 +31,13 @@ async function loginFormSubmit(e) {
         return alert`All fields are required!`;
     }
 
-    const userData = await login(email, password);
-
-    if (userData.code >= 400) {
-        return alert(userData.message);
-    }
-
+    // ERROR HANDLING
     try {
+        const userData = await login(email, password);
+
+        if (userData.code >= 400) {
+            return alert(userData.message);
+        }
         if (userData) {
             localStorage.setItem('_id', userData._id);
             localStorage.setItem('email', userData.email);
