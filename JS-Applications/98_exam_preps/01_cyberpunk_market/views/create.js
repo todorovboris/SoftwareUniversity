@@ -1,12 +1,12 @@
-import { create } from '../api/items.js';
-import { html, render } from '../lib/lit-html.js';
+import { createItem } from '../api/items.js';
+import { html, render, baseRender } from '../lib/lit-html.js';
 import page from '../lib/page.js';
 
-const template = (submitFormHandler) => html`<!-- Create Page (Only for logged-in users) -->
+const template = (onSubmit) => html`<!-- Create Page (Only for logged-in users) -->
     <section id="create">
         <div class="form form-item">
             <h2>Share Your item</h2>
-            <form @submit=${submitFormHandler} class="create-form">
+            <form @submit=${onSubmit} class="create-form">
                 <input type="text" name="item" id="item" placeholder="Item" />
                 <input type="text" name="imageUrl" id="item-image" placeholder="Your item Image URL" />
                 <input type="text" name="price" id="price" placeholder="Price in Euro" />
@@ -26,15 +26,16 @@ async function submitFormHandler(e) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+    const itemData = Object.fromEntries(formData);
 
     // Validate for empty fields
-    if (!Object.values(data).every((value) => !!value)) {
+    if (!Object.values(itemData).every((value) => !!value)) {
         return alert('All fields are required!');
     }
 
     try {
-        await create(data);
+        await createItem(itemData);
+
         page.redirect('/dashboard');
     } catch (err) {
         alert(err.message);
