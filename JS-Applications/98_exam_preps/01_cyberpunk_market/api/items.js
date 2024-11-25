@@ -34,6 +34,37 @@ export async function createItem(itemData) {
     return data;
 }
 
-// export const create = (itemData) => {
-//     return request('POST', `${baseUrl}/data/cyberpunk`, itemData);
-// };
+export async function editItem(itemId, data) {
+    const response = await fetch(`${baseUrl}/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(data),
+    });
+
+    const itemData = await response.json();
+    return itemData;
+}
+
+export async function deleteItem(itemId) {
+    const response = await fetch(`${baseUrl}/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+    });
+
+    const itemData = await response.json();
+    return itemData;
+}
+
+// export const getAll = () => request('GET', `${baseUrl}?sortBy=_createdOn%20desc`);
+
+// export const getOne = (itemId) => request('GET', `${baseUrl}/${itemId}`);
+
+// export const create = (itemData) => request('POST', `${baseUrl}`, itemData);
+
+// export const edit = (itemId, data) => request('PUT', `${baseUrl}/${itemId}`, data);

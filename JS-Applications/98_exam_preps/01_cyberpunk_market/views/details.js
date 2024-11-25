@@ -18,8 +18,8 @@ const template = (item, isCreator) => html` <!-- Details page -->
                 <!--Edit and Delete are only for creator-->
                 ${isCreator
                     ? html` <div id="action-buttons">
-                          <a href="" id="edit-btn">Edit</a>
-                          <a href="" id="delete-btn">Delete</a>
+                          <a href="/dashboard/${item._id}/edit" id="edit-btn">Edit</a>
+                          <a href="/dashboard/${item._id}/delete" id="delete-btn">Delete</a>
                       </div>`
                     : ''}
             </div>
@@ -29,7 +29,6 @@ const template = (item, isCreator) => html` <!-- Details page -->
 export default async function detailsView(ctx) {
     const itemId = ctx.params.itemId;
     const item = await getOne(itemId);
-    console.log(item);
 
     const userId = localStorage.getItem('_id');
     const isCreator = item._ownerId === userId;

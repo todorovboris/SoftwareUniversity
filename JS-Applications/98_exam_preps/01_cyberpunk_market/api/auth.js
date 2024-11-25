@@ -24,6 +24,10 @@ export async function register(email, password) {
         }),
     });
 
+    if (!response.ok) {
+        throw response.json();
+    }
+
     const userData = await response.json();
     return userData;
 }
@@ -37,6 +41,10 @@ export async function login(email, password) {
             password,
         }),
     });
+
+    if (!response.ok) {
+        throw response.json();
+    }
 
     const userData = await response.json();
     return userData;
