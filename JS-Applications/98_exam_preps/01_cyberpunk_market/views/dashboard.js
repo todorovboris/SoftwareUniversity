@@ -7,7 +7,7 @@ const template = (items) => html`
     <section id="dashboard">
         ${items.map(
             (item) => html` <div class="item">
-                <img src="${item.imageUrl}" alt="example1" />
+                <img src="${item.imageUrl}" alt=${item.item} />
                 <h3 class="model">${item.item}</h3>
                 <div class="item-info">
                     <p class="price">Price: €${item.price}</p>
