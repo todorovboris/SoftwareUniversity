@@ -8,7 +8,7 @@ const template = (isAuthenticated) => html` <a id="logo" href="/"><img id="logo"
         ${isAuthenticated
             ? html` <!-- Logged-in users -->
                   <div class="user">
-                      <a href="#">Sell</a>
+                      <a href="/create">Sell</a>
                       <a href="/logout">Logout</a>
                   </div>`
             : html` <!-- Guest users -->
