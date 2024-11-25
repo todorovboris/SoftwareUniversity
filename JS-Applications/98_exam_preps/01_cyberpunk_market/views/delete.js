@@ -6,7 +6,7 @@ export default async function deleteView(ctx) {
     const isConfirmed = confirm('Are you sure you want to delete this item?');
 
     if (!isConfirmed) {
-        return history.back();
+        return;
     }
 
     try {
