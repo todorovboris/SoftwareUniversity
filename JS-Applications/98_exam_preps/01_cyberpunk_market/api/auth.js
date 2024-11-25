@@ -10,6 +10,10 @@ const baseUrl = 'http://localhost:3030/users';
 //     return request('POST', `${baseUrl}/login`, { email, password });
 // };
 
+// export const logout = () => {
+//     return request('GET', `${baseUrl}/logout`);
+// };
+
 export async function register(email, password) {
     const response = await fetch(`${baseUrl}/register`, {
         method: 'POST',
@@ -19,6 +23,10 @@ export async function register(email, password) {
             password,
         }),
     });
+
+    if (!response.ok) {
+        throw response.json();
+    }
 
     const userData = await response.json();
     return userData;
@@ -33,6 +41,10 @@ export async function login(email, password) {
             password,
         }),
     });
+
+    if (!response.ok) {
+        throw response.json();
+    }
 
     const userData = await response.json();
     return userData;

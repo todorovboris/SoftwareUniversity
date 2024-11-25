@@ -8,6 +8,8 @@ import loginView from './views/login.js';
 import logoutView from './views/logout.js';
 import registerView from './views/register.js';
 import renderNavigation from './views/navigation.js';
+import detailsView from './views/details.js';
+import deleteView from './views/delete.js';
 
 page(renderNavigation);
 
@@ -16,6 +18,9 @@ page('/login', loginView);
 page('/register', registerView);
 page('/logout', logoutView);
 page('/dashboard', dashboardView);
+page('/dashboard/:itemId/details', detailsView);
+page('/dashboard/:itemId/edit', editView);
+page('/dashboard/:itemId/delete', deleteView);
 page('/create', createView);
 page('/edit', editView);
 
