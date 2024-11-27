@@ -7,6 +7,9 @@ import registerView from './views/register.js';
 import dashboardView from './views/dashboard.js';
 import createView from './views/create.js';
 import detailsView from './views/details.js';
+import renderNavigation from './views/navigation.js';
+
+page(renderNavigation);
 
 page('/', homeView);
 page('/login', loginView);

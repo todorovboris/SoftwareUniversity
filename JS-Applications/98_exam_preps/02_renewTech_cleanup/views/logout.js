@@ -1,7 +1,15 @@
-import { render, html } from '../lib/lit-html.js';
-
-const template = () => html``;
+import { logout } from '../api/auth.js';
+import page from '../lib/page.js';
 
 export default async function logoutView(ctx) {
-    render(template());
+    const token = localStorage.getItem('accessToken');
+
+    if (token) {
+        try {
+            await logout(token);
+            page.redirect('/');
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
 }
