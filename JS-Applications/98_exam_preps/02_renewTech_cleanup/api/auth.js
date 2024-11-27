@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3030//users';
+const baseUrl = 'http://localhost:3030/users';
 
 export async function register(email, password) {
     const response = await fetch(`${baseUrl}/register`, {
