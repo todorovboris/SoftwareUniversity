@@ -29,3 +29,11 @@ export async function login(email, password) {
     const userData = await response.json();
     return userData;
 }
+
+export async function logout(token) {
+    return fetch(`${baseUrl}/logout`, {
+        headers: { 'X-Authorization': token },
+    }).then(() => {
+        localStorage.clear();
+    });
+}
