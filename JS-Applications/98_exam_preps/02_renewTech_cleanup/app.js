@@ -17,5 +17,6 @@ page('/register', registerView);
 page('/logout', logoutView);
 page('/dashboard', dashboardView);
 page('/create', createView);
+page('/dashboard/:solutionid/details', detailsView);
 
 page();

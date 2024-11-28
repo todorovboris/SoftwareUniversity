@@ -7,6 +7,13 @@ export async function getAll() {
     return solutions;
 }
 
+export async function getOne(solutionId) {
+    const response = await fetch(`${baseUrl}/${solutionId}`);
+    const solution = await response.json();
+
+    return solution;
+}
+
 export async function createSolution(solutionData) {
     const response = await fetch(`${baseUrl}`, {
         method: 'POST',
