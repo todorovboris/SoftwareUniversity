@@ -32,3 +32,17 @@ export async function createSolution(solutionData) {
     const data = await response.json();
     return data;
 }
+
+export async function editSolution(solutionId, data) {
+    const response = await fetch(`${baseUrl}/${solutionId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(data),
+    });
+
+    const solutionData = await response.json();
+    return solutionData;
+}
