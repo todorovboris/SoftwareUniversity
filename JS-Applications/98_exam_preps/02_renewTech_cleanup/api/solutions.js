@@ -46,3 +46,16 @@ export async function editSolution(solutionId, data) {
     const solutionData = await response.json();
     return solutionData;
 }
+
+export async function deleteSolution(solutionId) {
+    const response = await fetch(`${baseUrl}/${solutionId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+    });
+
+    const solutionData = await response.json();
+    return solutionData;
+}
