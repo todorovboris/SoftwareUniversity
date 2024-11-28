@@ -9,9 +9,9 @@ const template = (solution, onSubmit) => html`<!-- Edit Page (Only for logged-in
             <h2>Edit Solution</h2>
             <form @submit=${onSubmit} class="edit-form">
                 <input type="text" value=${solution.type} name="type" id="type" placeholder="Solution Type" />
-                <input type="text" value=${solution.imageUrl} name="image-url" id="image-url" placeholder="Image URL" />
+                <input type="text" value=${solution.imageUrl} name="imageUrl" id="imageUrl" placeholder="Image URL" />
                 <textarea id="description" name="description" placeholder="Description" rows="2" cols="10">${solution.description}</textarea>
-                <textarea id="more-info" name="more-info" placeholder="more Info" rows="2" cols="10">${solution.learnMore}</textarea>
+                <textarea id="learnMore" name="learnMore" placeholder="more Info" rows="2" cols="10">${solution.learnMore}</textarea>
                 <button type="submit">Edit</button>
             </form>
         </div>
