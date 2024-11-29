@@ -30,6 +30,7 @@ async function editFormSubmitHandler(e) {
     const formData = new FormData(e.currentTarget);
     const solutionData = Object.fromEntries(formData);
     const solutionId = this.params.solutionId;
+    console.log(solutionId);
 
     // VALIDATION for empty fields
     if (!Object.values(solutionData).every((value) => !!value)) {
