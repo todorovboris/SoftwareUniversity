@@ -9,6 +9,9 @@ import createView from './views/create.js';
 import detailsView from './views/details.js';
 import deleteView from './views/delete.js';
 import editView from './views/edit.js';
+import renderNavigation from './views/navigation.js';
+
+page(renderNavigation);
 
 page('/', homeView);
 page('/login', loginView);
