@@ -46,3 +46,13 @@ export async function editShow(showId, data) {
     const showData = await response.json();
     return showData;
 }
+
+export async function deleteShow(showId) {
+    const response = await fetch(`${baseUrl}/${showId}`, {
+        method: 'DELETE',
+        headers: { 'X-Authorization': localStorage.getItem('accessToken') },
+    });
+
+    const showData = response.json();
+    return showData;
+}
