@@ -29,8 +29,8 @@ export async function createShow(showsData) {
         throw new Error(error.message);
     }
 
-    const data = await response.json();
-    return data;
+    const showData = await response.json();
+    return showData;
 }
 
 export async function editShow(showId, data) {
@@ -44,5 +44,15 @@ export async function editShow(showId, data) {
     });
 
     const showData = await response.json();
+    return showData;
+}
+
+export async function deleteShow(showId) {
+    const response = await fetch(`${baseUrl}/${showId}`, {
+        method: 'DELETE',
+        headers: { 'X-Authorization': localStorage.getItem('accessToken') },
+    });
+
+    const showData = response.json();
     return showData;
 }
