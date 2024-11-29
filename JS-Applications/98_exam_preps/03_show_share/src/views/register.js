@@ -40,6 +40,7 @@ async function formSubmitHandler(e) {
     // ERROR-HANDLING
     try {
         const userData = await register(email, password);
+
         if (userData.code >= 400) {
             return alert(userData.message);
         }
