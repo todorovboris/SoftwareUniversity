@@ -32,3 +32,17 @@ export async function createShow(showsData) {
     const data = await response.json();
     return data;
 }
+
+export async function editShow(showId, data) {
+    const response = await fetch(`${baseUrl}/${showId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(data),
+    });
+
+    const showData = await response.json();
+    return showData;
+}

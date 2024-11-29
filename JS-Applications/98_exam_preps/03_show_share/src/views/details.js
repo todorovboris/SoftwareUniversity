@@ -15,8 +15,8 @@ const tempalte = (show, isCreator, userId) => html`<!-- Details page -->
                 ${isCreator
                     ? html` <!--Edit and Delete are only for creator-->
                           <div id="action-buttons">
-                              <a href="/details/${show._id}/edit" id="edit-btn">Edit</a>
-                              <a href="/details/${show._id}/delete" id="delete-btn">Delete</a>
+                              <a href="/dashboard/${show._id}/edit" id="edit-btn">Edit</a>
+                              <a href="/dashboard/${show._id}/delete" id="delete-btn">Delete</a>
                           </div>`
                     : ''}
             </div>
@@ -26,8 +26,7 @@ const tempalte = (show, isCreator, userId) => html`<!-- Details page -->
 export default async function detailsView(ctx) {
     const showId = ctx.params.showId;
     const show = await getOne(showId);
-
-    console.log(show);
+    // console.log(show);
 
     const userId = localStorage.getItem('_id');
     const isCreator = userId === show._ownerId;
