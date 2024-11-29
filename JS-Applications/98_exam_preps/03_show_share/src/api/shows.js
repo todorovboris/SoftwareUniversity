@@ -7,6 +7,13 @@ export async function getAll() {
     return shows;
 }
 
+export async function getOne(showId) {
+    const response = await fetch(`${baseUrl}/${showId}`);
+    const show = await response.json();
+
+    return show;
+}
+
 export async function createShow(showsData) {
     const response = await fetch(`${baseUrl}`, {
         method: 'POST',
