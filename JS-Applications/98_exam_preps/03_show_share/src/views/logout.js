@@ -1,7 +1,15 @@
-import { html, render } from '../../node_modules/lit-html/lit-html.js';
+import { logout } from '../api/auth.js';
+import page from '../../node_modules/page/page.mjs';
 
-const tempalte = () => html``;
+export default async function logoutView(ctx) {
+    const token = localStorage.getItem('accessToken');
 
-export default function logoutView() {
-    render(tempalte(), document.querySelector('body main'));
+    if (token) {
+        try {
+            await logout(token);
+            page.redirect('/');
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
 }

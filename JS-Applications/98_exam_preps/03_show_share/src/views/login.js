@@ -10,12 +10,12 @@ const tempalte = (onSubmit) => html` <!-- Login Page (Only for Guest users) -->
                 <input type="text" name="email" id="email" placeholder="email" />
                 <input type="password" name="password" id="password" placeholder="password" />
                 <button type="submit">login</button>
-                <p class="message">Not registered? <a href="#">Create an account</a></p>
+                <p class="message">Not registered? <a href="/register">Create an account</a></p>
             </form>
         </div>
     </section>`;
 
-export default async function loginView() {
+export default async function loginView(ctx) {
     render(tempalte(formSubmitHandler), document.querySelector('body main'));
 }
 
