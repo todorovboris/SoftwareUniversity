@@ -43,6 +43,11 @@ export async function editShow(showId, data) {
         body: JSON.stringify(data),
     });
 
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
     const showData = await response.json();
     return showData;
 }
