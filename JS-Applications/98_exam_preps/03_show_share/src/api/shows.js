@@ -6,3 +6,22 @@ export async function getAll() {
 
     return shows;
 }
+
+export async function createShow(showsData) {
+    const response = await fetch(`${baseUrl}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(showsData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const data = await response.json();
+    return data;
+}
