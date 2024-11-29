@@ -16,7 +16,7 @@ const tempalte = (onSubmit) => html`<!-- Register Page (Only for Guest users) --
         </div>
     </section>`;
 
-export default function registerView() {
+export default function registerView(ctx) {
     render(tempalte(formSubmitHandler), document.querySelector('body main'));
 }
 

@@ -9,6 +9,6 @@ const tempalte = () => html` <!-- Home page -->
         </h1>
     </section>`;
 
-export default function homeView() {
+export default function homeView(ctx) {
     render(tempalte(), document.querySelector('body main'));
 }

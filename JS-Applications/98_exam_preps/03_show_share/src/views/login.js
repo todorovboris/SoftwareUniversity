@@ -15,7 +15,7 @@ const tempalte = (onSubmit) => html` <!-- Login Page (Only for Guest users) -->
         </div>
     </section>`;
 
-export default async function loginView() {
+export default async function loginView(ctx) {
     render(tempalte(formSubmitHandler), document.querySelector('body main'));
 }
 
