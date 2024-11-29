@@ -29,8 +29,8 @@ export async function createShow(showsData) {
         throw new Error(error.message);
     }
 
-    const data = await response.json();
-    return data;
+    const showData = await response.json();
+    return showData;
 }
 
 export async function editShow(showId, data) {
