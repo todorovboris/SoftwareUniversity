@@ -14,7 +14,7 @@ const tempalte = (shows, isShowAvailable) => html`<!-- Dashboard page -->
                               <h3 class="title">${show.title}</h3>
                               <p class="genre">${show.genre}</p>
                               <p class="country-of-origin">${show.country}</p>
-                              <a class="details-btn" href="#">Details</a>
+                              <a class="details-btn" href="/dashboard/${show._id}/details">Details</a>
                           </div>
                       </div>`
               )}
