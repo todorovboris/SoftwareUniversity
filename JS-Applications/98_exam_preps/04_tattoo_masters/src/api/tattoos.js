@@ -51,3 +51,13 @@ export async function editTattoo(tattooId, tattooData) {
     const editData = await response.json();
     return editData;
 }
+
+export async function deleteTattoo(tattooId) {
+    const response = await fetch(`${baseUrl}/${tattooId}`, {
+        method: 'DELETE',
+        headers: { 'X-Authorization': localStorage.getItem('accessToken') },
+    });
+
+    const tattooData = await response.json();
+    return tattooData;
+}
