@@ -32,3 +32,22 @@ export async function createTattoo(tattoosData) {
     const tattooData = await response.json();
     return tattooData;
 }
+
+export async function editTattoo(tattooId, tattooData) {
+    const response = await fetch(`${baseUrl}/${tattooId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(tattooData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const editData = await response.json();
+    return editData;
+}
