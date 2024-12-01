@@ -6,6 +6,12 @@ export async function getAll() {
     return items;
 }
 
+export async function getOne(itemId) {
+    const response = await fetch(`${baseUrl}/${itemId}`);
+    const item = await response.json();
+    return item;
+}
+
 export async function createItem(itemsData) {
     const response = await fetch(`${baseUrl}`, {
         method: 'POST',
@@ -23,4 +29,33 @@ export async function createItem(itemsData) {
 
     const item = response.json();
     return item;
+}
+
+export async function editItem(itemId, itemData) {
+    const response = await fetch(`${baseUrl}/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(itemData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const editItem = await response.json();
+    return editItem;
+}
+
+export async function deleteItem(itemId) {
+    const response = await fetch(`${baseUrl}/${itemId}`, {
+        method: 'DELETE',
+        headers: { 'X-Authorization': localStorage.getItem('accessToken') },
+    });
+
+    const data = await response.json();
+    return data;
 }
