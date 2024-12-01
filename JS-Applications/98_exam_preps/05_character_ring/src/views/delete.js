@@ -1,17 +1,17 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
-import { deleteTattoo } from '../api/tattoos.js';
 import page from '../../node_modules/page/page.mjs';
+import { deleteItem } from '../api/items.js';
 
 export default async function deleteView(ctx) {
-    const tattooId = ctx.params.tattooId;
-    const isConfirmed = confirm('Are you sure you want to delete this tattoo?');
+    const itemId = ctx.params.itemId;
+    const isConfirmed = confirm('Are you sure you want to delete this item?');
 
     if (!isConfirmed) return;
 
     try {
-        await deleteTattoo(tattooId);
+        await deleteItem(itemId);
         page.redirect('/dashboard');
     } catch (err) {
-        alert(err.message);
+        return alert(err.message);
     }
 }
