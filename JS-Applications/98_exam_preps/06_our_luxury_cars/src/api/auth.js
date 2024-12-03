@@ -22,9 +22,9 @@ export async function login(email, password) {
     return userData;
 }
 
-export async function logout(accessToken) {
+export async function logout() {
     return fetch(`${baseUrl}/logout`, {
-        headers: { 'X-Authorization': accessToken },
+        headers: { 'X-Authorization': localStorage.getItem('accessToken') },
     }).then(() => {
         localStorage.clear();
     });

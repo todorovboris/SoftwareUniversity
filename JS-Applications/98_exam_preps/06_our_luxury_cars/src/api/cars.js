@@ -5,3 +5,22 @@ export async function getAll() {
     const cars = response.json();
     return cars;
 }
+
+export async function createCar(carData) {
+    const response = await fetch(`${baseUrl}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(carData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const car = await response.json();
+    return car;
+}
