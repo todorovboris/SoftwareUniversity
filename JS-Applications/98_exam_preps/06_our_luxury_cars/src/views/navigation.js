@@ -5,7 +5,7 @@ const template = (isLoggedIn) => html`<!-- Navigation -->
     <nav>
         <div>
             <a href="/dashboard">Our Cars</a>
-            <a href="#">Search</a>
+            <a href="/search">Search</a>
         </div>
         ${isLoggedIn
             ? html` <!-- Logged-in users -->

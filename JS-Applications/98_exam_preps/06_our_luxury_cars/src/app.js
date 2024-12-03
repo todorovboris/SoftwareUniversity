@@ -10,6 +10,7 @@ import editView from './views/edit.js';
 import deleteView from './views/delete.js';
 import navigationView from './views/navigation.js';
 import createView from './views/create.js';
+import searchView from './views/search.js';
 
 page(navigationView);
 
@@ -22,5 +23,6 @@ page('/create', createView);
 page('/dashboard/:carId/details', detailsView);
 page('/dashboard/:carId/edit', editView);
 page('/dashboard/:carId/delete', deleteView);
+page('/search', searchView);
 
 page();

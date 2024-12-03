@@ -30,3 +30,22 @@ export async function createCar(carData) {
     const car = await response.json();
     return car;
 }
+
+export async function editCar(carId, carData) {
+    const response = await fetch(`${baseUrl}/${carId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(carData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const editedCarData = await response.json();
+    return editedCarData;
+}
