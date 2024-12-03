@@ -7,6 +7,10 @@ export async function register(email, password) {
         body: JSON.stringify({ email, password }),
     });
 
+    if (!response.ok) {
+        throw response.json();
+    }
+
     const userData = await response.json();
     return userData;
 }
@@ -17,6 +21,10 @@ export async function login(email, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
     });
+
+    if (!response.ok) {
+        throw response.json();
+    }
 
     const userData = await response.json();
     return userData;
