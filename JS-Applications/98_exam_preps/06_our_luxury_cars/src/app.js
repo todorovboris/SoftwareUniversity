@@ -11,7 +11,7 @@ import deleteView from './views/delete.js';
 import navigationView from './views/navigation.js';
 import createView from './views/create.js';
 
-// page(navigationView);
+page(navigationView);
 
 page('/', homeView);
 page('/login', loginView);
