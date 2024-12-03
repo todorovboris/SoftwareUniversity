@@ -2,8 +2,14 @@ const baseUrl = 'http://localhost:3030/data/cars';
 
 export async function getAll() {
     const response = await fetch(`${baseUrl}?sortBy=_createdOn%20desc`);
-    const cars = response.json();
+    const cars = await response.json();
     return cars;
+}
+
+export async function getOne(carId) {
+    const response = await fetch(`${baseUrl}/${carId}`);
+    const car = await response.json();
+    return car;
 }
 
 export async function createCar(carData) {
