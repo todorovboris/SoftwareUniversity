@@ -49,3 +49,13 @@ export async function editCar(carId, carData) {
     const editedCarData = await response.json();
     return editedCarData;
 }
+
+export async function deleteCar(carId) {
+    const response = await fetch(`${baseUrl}/${carId}`, {
+        method: 'DELETE',
+        headers: { 'X-Authorization': localStorage.getItem('accessToken') },
+    });
+
+    const data = await response.json();
+    return data;
+}
