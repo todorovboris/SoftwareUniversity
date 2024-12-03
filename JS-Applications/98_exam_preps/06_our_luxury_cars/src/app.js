@@ -19,8 +19,8 @@ page('/register', registerView);
 page('/logout', logoutView);
 page('/dashboard', dashboardView);
 page('/create', createView);
-page('/dashboard/:itemId/details', detailsView);
-page('/dashboard/:itemId/edit', editView);
-page('/dashboard/:itemId/delete', deleteView);
+page('/dashboard/:carId/details', detailsView);
+page('/dashboard/:carId/edit', editView);
+page('/dashboard/:carId/delete', deleteView);
 
 page();
