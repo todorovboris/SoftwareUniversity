@@ -5,3 +5,19 @@ export async function getAll() {
     const items = await response.json();
     return items;
 }
+
+export async function createItem(itemData) {
+    const response = await fetch(`${baseUrl}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(itemData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const item = await response.json();
+    return item;
+}
