@@ -18,8 +18,8 @@ const template = (item, isLoggedIn, isCreator) => html`<!-- Details page -->
                     ? html`<!--Edit and Delete are only for creator-->
                           <div id="action-buttons">
                               ${isCreator
-                                  ? html` <a href="" id="edit-btn">Edit</a>
-                                        <a href="" id="delete-btn">Delete</a>`
+                                  ? html` <a href="/dashboard/${item._id}/edit" id="edit-btn">Edit</a>
+                                        <a href="/dashboard/${item._id}/delete" id="delete-btn">Delete</a>`
                                   : html` <!--Bonus - Only for logged-in users ( not authors )-->
                                         <a href="" id="like-btn">Like</a>`}
                           </div>`
