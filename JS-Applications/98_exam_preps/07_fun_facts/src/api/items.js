@@ -30,3 +30,22 @@ export async function createItem(itemData) {
     const item = await response.json();
     return item;
 }
+
+export async function editItem(itemId, itemData) {
+    const response = await fetch(`${baseUrl}/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(itemData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const editItem = await response.json();
+    return editItem;
+}
