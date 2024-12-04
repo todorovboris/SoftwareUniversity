@@ -32,7 +32,7 @@ async function formSubmitHandler(e) {
 
     // VALIDATION
     if (!Object.values(itemData).every((value) => !!value)) {
-        return 'All fields are required!';
+        return alert('All fields are required!');
     }
 
     //ERROR-HANDLING
