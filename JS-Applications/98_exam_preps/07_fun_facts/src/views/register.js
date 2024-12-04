@@ -14,7 +14,7 @@ const template = (onSubmit) => html`<!-- Register Page (Only for Guest users) --
                 <p class="message">Already registered? <a href="/login">Login</a></p>
             </form>
         </div>
-    </section>`;
+    </section> `;
 
 export default async function registerView(ctx) {
     render(template(formSubmitHandler), document.querySelector('#wrapper main'));
@@ -35,7 +35,7 @@ async function formSubmitHandler(e) {
     }
 
     if (password !== rePassword) {
-        return alert("Passwords don't match!");
+        return alert("Passwords doesn't match!");
     }
 
     // ERROR-HANDLING
