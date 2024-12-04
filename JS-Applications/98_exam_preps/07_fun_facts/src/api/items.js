@@ -49,3 +49,13 @@ export async function editItem(itemId, itemData) {
     const editItem = await response.json();
     return editItem;
 }
+
+export async function deleteItem(itemId) {
+    const response = await fetch(`${baseUrl}/${itemId}`, {
+        method: 'DELETE',
+        headers: { 'X-Authorization': localStorage.getItem('accessToken') },
+    });
+
+    const data = await response.json();
+    return data;
+}
