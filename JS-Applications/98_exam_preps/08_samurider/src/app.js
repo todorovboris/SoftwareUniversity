@@ -20,9 +20,9 @@ page('/logout', logoutView);
 page('/register', registerView);
 page('/dashboard', dashboardView);
 page('/create', createView);
-page('/dashbaord/:itemId/details', detailsView);
-page('/dashbaord/:itemId/edit', editView);
-page('/dashbaord/:itemId/delete', deleteView);
+page('/dashboard/:itemId/details', detailsView);
+page('/dashboard/:itemId/edit', editView);
+page('/dashboard/:itemId/delete', deleteView);
 page('/search', searchView);
 
 page();

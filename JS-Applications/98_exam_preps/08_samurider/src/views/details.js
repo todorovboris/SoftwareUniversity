@@ -20,7 +20,7 @@ const template = (item, isCreator) => html`<!-- Details page -->
                               <a href="/dashboard/${item._id}/edit" id="edit-btn">Edit</a>
                               <a href="/dashboard/${item._id}/delete" id="delete-btn">Delete</a>
                           </div>`
-                    : ``}
+                    : ''}
             </div>
         </div>
     </section>`;

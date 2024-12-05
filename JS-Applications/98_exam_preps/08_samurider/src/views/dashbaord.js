@@ -14,7 +14,7 @@ const template = (items, isItemAvailable) => html`<!-- Dashboard page -->
                       <p class="year">Year: ${item.year}</p>
                       <p class="mileage">Mileage: ${item.mileage} km.</p>
                       <p class="contact">Contact Number: ${item.contact}</p>
-                      <a class="details-btn" href="/dashbaord/${item._id}/details">More Info</a>
+                      <a class="details-btn" href="/dashboard/${item._id}/details">More Info</a>
                   </div>`
               )}
           </section>`
