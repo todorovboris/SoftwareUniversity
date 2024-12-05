@@ -1,8 +1,12 @@
 import { html, render } from '../../node_modules/lit-html/lit-html.js';
 import page from '../../node_modules/page/page.mjs';
-
-const template = () => html``;
+import { logout } from '../api/auth.js';
 
 export default async function logoutView(ctx) {
-    render(template(), document.querySelector('#wrapper main'));
+    try {
+        await logout();
+        page.redirect('/');
+    } catch (err) {
+        return alert(err.message);
+    }
 }
