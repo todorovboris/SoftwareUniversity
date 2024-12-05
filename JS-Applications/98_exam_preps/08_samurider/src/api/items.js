@@ -6,6 +6,12 @@ export async function getAll() {
     return items;
 }
 
+export async function getOne(itemId) {
+    const response = await fetch(`${baseUrl}/${itemId}`);
+    const item = await response.json();
+    return item;
+}
+
 export async function createItem(newItemData) {
     const response = await fetch(`${baseUrl}`, {
         method: 'POST',
