@@ -10,6 +10,7 @@ import loginView from './views/login.js';
 import logoutView from './views/logout.js';
 import registerView from './views/register.js';
 import navigationView from './views/navigation.js';
+import searchView from './views/search.js';
 
 page(navigationView);
 
@@ -22,5 +23,6 @@ page('/create', createView);
 page('/dashbaord/:itemId/details', detailsView);
 page('/dashbaord/:itemId/edit', editView);
 page('/dashbaord/:itemId/delete', deleteView);
+page('/search', searchView);
 
 page();
