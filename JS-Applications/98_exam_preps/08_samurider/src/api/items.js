@@ -5,3 +5,22 @@ export async function getAll() {
     const items = await response.json();
     return items;
 }
+
+export async function createItem(newItemData) {
+    const response = await fetch(`${baseUrl}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('accessToken'),
+        },
+        body: JSON.stringify(newItemData),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+    }
+
+    const item = await response.json();
+    return item;
+}
