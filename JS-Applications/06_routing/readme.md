@@ -76,28 +76,3 @@ history.pushState(null, null, url.pathname);
 
 // Show content based on the current route
 routes[url.pathname]()
-
-// —————————————————————————————————————————————
-
-MiddleWares
-
--   Could be prepared FOR the whole app OR separate route
--   Data preparation
--   Route guarding -> if someone is authorised
--   Additional checks or validations
--   Render the navigation before each route
-
--   If we didn’t initialised specific rout (‘/…’) in page, and just invoke a function, this is MiddleWare and it will be shown for the whole app:
-
-export default function renderNavigation(ctx, next) {
-…
-…
-
-    next();
-
-}
-
-page(renderNavigation); // ALWAYS render the middleware and then render all the rest
-page(‘/’, homePage);
-…
-…

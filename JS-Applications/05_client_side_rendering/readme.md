@@ -3,7 +3,7 @@ Client Side Rendering
 Rendering - буквално процесът на визуализиране на изображения;
 UI Web Rendering - процесът на генериране на HTML
 
-1. npm install lit-html
+1. npm install lit-html:
 
 // —————————————————————————————————————————————
 
